@@ -1,9 +1,3 @@
-"""
-Validates eval/qa_set.jsonl against corpus/manifest.json: schema conformance,
-bucket/unanswerable consistency, and that every citation resolves to a real
-heading in the vendored corpus. Exits non-zero on any error so this can gate CI.
-"""
-
 import json
 import sys
 from collections import Counter

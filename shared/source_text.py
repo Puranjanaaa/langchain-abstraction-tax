@@ -1,16 +1,3 @@
-"""Resolves a citation's (file, heading) into the section text it actually
-points at, via corpus/manifest.json. Used by eval/metrics/judge.py to check
-whether an answer is faithful to what its citations actually say.
-
-Same heading-splitting algorithm as
-implementations/langchain_impl/indexing.py's _split_into_sections (a section
-runs from its heading line to the next heading line or end of file). Factored
-out here rather than left private to that implementation because every
-implementation's citations resolve to (file, heading) pairs per
-eval/SCHEMA.md, so all five need identical text for the same citation —
-this is eval-side infrastructure, not LangChain-specific.
-"""
-
 import json
 import re
 from functools import lru_cache

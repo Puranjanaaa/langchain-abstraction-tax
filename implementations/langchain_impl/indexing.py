@@ -1,28 +1,3 @@
-"""
-Turns corpus/kubernetes-docs/*.md into LangChain Documents for the vector
-store. Chunking algorithm (locked across all five implementations — see
-shared/retrieval_config.py):
-
-  1. Split each file on its markdown headings first, so every chunk maps to
-     exactly one heading by construction. eval/SCHEMA.md resolves citations
-     at heading granularity regardless of how a framework draws chunk
-     boundaries; splitting on headings up front means that resolution never
-     has to guess which heading a chunk's tail belongs to.
-  2. Any section longer than SECTION_CHAR_LIMIT gets recursively sub-split,
-     with sub-chunks inheriting the parent section's (file, heading)
-     metadata.
-
-Heading slugs come from corpus/manifest.json rather than being re-derived
-from the vendored markdown. scripts/vendor_corpus.py strips explicit `{#id}`
-anchor overrides from the on-disk body for clean display (~16% of upstream
-headings carry one) — that id only survives in the manifest, computed once
-at vendor time from the pre-strip source. Re-slugifying the on-disk text
-would silently get those headings wrong; manifest.json is the single source
-of truth for citation-matching slugs (see eval/SCHEMA.md). Each file's
-manifest heading order is matched positionally against its heading lines —
-verified 1:1 across all 396 files before relying on this.
-"""
-
 import json
 import re
 from pathlib import Path

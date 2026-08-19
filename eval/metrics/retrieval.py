@@ -1,21 +1,3 @@
-"""
-Recall@k and MRR, scored at the heading level: a framework's retrieved chunk
-is resolved up to its enclosing (file, heading) via corpus/manifest.json
-before comparing against a qa pair's citations, so results are comparable
-across frameworks regardless of how each one draws chunk boundaries.
-
-`k` isn't a parameter here — Answer.citations already *is* the
-implementation's deduped, rank-ordered top-k retrieval (see
-shared/retrieval_config.TOP_K, held identical across implementations), so
-these metrics just consume it as given.
-
-hard-unanswerable pairs (qa.citations == []) are excluded from both
-averages: an empty expected-citation set makes "did we retrieve the right
-thing" undefined, not zero. Whether an implementation correctly declined
-those questions is judged separately (see eval/metrics/judge.py) — folding
-it in here would conflate retrieval quality with generation behavior.
-"""
-
 from eval.harness import EvalResult
 
 

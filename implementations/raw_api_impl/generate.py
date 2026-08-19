@@ -1,10 +1,3 @@
-"""Fixed retrieve-then-generate: top-k chunks for a question, then a single
-chat completion grounded in them. Structurally parallel to
-implementations/langchain_impl/chain.py but with zero framework code — no
-retriever object, no prompt template, no chain composition, just the
-shared.llm client called directly.
-"""
-
 from implementations.raw_api_impl.retrieval import Chunk, Retriever
 from shared.llm import chat_model, get_client
 from shared.retrieval_config import TOP_K

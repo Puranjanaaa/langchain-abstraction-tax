@@ -1,14 +1,3 @@
-"""Plain-Python retrieval backing the search_docs tool: embeds
-shared/chunking.py's chunks once via shared.llm's client and does an
-in-memory cosine-similarity top-k search. Same approach as
-implementations/dspy_impl/retrieval.py, kept as an independent copy rather
-than shared — each implementation owns its own retrieval/indexing wiring
-the same way implementations/langchain_impl does, per the project's
-existing convention. Only the chunk *boundaries* (shared/chunking.py) and
-parameters (shared/retrieval_config.py) are locked identical across all
-five.
-"""
-
 import numpy as np
 
 from shared.chunking import Chunk, build_chunks

@@ -1,11 +1,3 @@
-"""Fully hand-written retrieval: embeds shared/chunking.py's chunks via
-shared.llm's OpenAI-compatible client and does an in-memory
-cosine-similarity top-k search — no vector store library, no framework of
-any kind. This is the zero-abstraction baseline every other implementation
-is measured against, so the search itself (not just the chunk boundaries)
-is written out in full rather than imported from anywhere.
-"""
-
 import numpy as np
 
 from shared.chunking import Chunk, build_chunks

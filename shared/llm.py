@@ -1,13 +1,3 @@
-"""
-Provider-agnostic LLM/embedding config, driven entirely by env vars so no
-vendor is hardcoded here or in any of the five implementations.
-
-Every implementation — including LangChain's ChatOpenAI/OpenAIEmbeddings —
-points at the same OpenAI-compatible endpoint via these env vars, so swapping
-providers (OpenAI, a local vLLM/Ollama server, Together, etc.) is a .env
-change, not a code change in five places.
-"""
-
 import os
 from functools import lru_cache
 

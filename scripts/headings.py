@@ -1,16 +1,3 @@
-"""
-Shared heading extraction for the vendored corpus.
-
-The upstream Kubernetes docs assign explicit anchor ids to ~16% of headings via
-Hugo/Goldmark attribute syntax: `## Heading text {#custom-id}`. Where an explicit
-id is present it IS the citation slug (it's what the docs authors intended as the
-stable anchor); where absent, we fall back to a GitHub-style auto-slug of the
-heading text. This module is the single source of truth for that mapping — the
-vendoring script uses it to build the manifest's per-file heading index, and
-anything that verifies or resolves a citation should look it up here rather than
-re-deriving a slug independently.
-"""
-
 import re
 
 from slugify import slugify

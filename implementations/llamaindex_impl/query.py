@@ -1,10 +1,3 @@
-"""Retrieve top-k nodes for a question via a LlamaIndex retriever, then
-generate an answer grounded in them through SharedClientLLM. Hand-built
-retrieve-then-generate rather than LlamaIndex's RetrieverQueryEngine /
-response-synthesizer machinery, so the prompt actually sent to the model is
-visible and directly comparable to the other four implementations' prompts.
-"""
-
 from llama_index.core.base.llms.types import ChatMessage, MessageRole
 from llama_index.core.schema import NodeWithScore
 

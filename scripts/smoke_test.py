@@ -1,12 +1,3 @@
-"""
-Walks through every piece of the phase 2 scaffolding end-to-end and prints what
-happens at each step: env config, a live chat + embedding call against
-whatever LLM_BASE_URL points at, the qa set loading, and the shared Answer/
-Citation types. Not a correctness test (there's nothing to assert against
-until phase 3 implementations exist) — it's a "does the wiring work" check
-you can rerun any time you change shared/ or .env.
-"""
-
 import sys
 from pathlib import Path
 

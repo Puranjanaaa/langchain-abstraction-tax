@@ -1,5 +1,3 @@
-"""Shared data types for the answer() interface all five implementations satisfy."""
-
 from dataclasses import dataclass, field
 
 

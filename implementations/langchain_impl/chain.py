@@ -1,22 +1,3 @@
-"""
-The LangChain retrieval chain itself: embed the corpus into an in-memory
-vector store, retrieve top-k chunks for a question, and generate an answer
-grounded in them.
-
-Hand-built from langchain_core primitives (retriever, ChatPromptTemplate,
-ChatOpenAI, piped with `|`) rather than langchain_classic's
-create_retrieval_chain/create_stuff_documents_chain helpers. In the
-installed LangChain version (1.x) those helpers live in langchain_classic, a
-legacy-compat package — langchain.chains doesn't exist in the current main
-package at all. LCEL composition with `|` is the actual current primitive;
-using the classic helpers here would misrepresent what "current LangChain"
-looks like, which is the point of this repo.
-
-InMemoryVectorStore (langchain_core) rather than FAISS/Chroma: the corpus is
-~6.7k chunks, comfortably fits in memory, and this avoids pulling in a
-native-compiled vector store dependency for a one-process benchmark.
-"""
-
 from langchain_core.documents import Document
 from langchain_core.messages import AIMessage
 from langchain_core.prompts import ChatPromptTemplate

@@ -1,14 +1,3 @@
-"""Plain-Python retrieval: embeds shared/chunking.py's chunks once via
-shared.llm's client and does an in-memory cosine-similarity top-k search.
-
-Not wrapped in a dspy.Retrieve component — retrieval is the pipeline locked
-identically across all five implementations (see shared/chunking.py,
-shared/retrieval_config.py), so this is called as a plain function from
-dspy_impl's Module rather than represented as DSPy-idiomatic retrieval
-machinery, which would suggest retrieval itself is part of what's being
-compared here rather than held fixed.
-"""
-
 import numpy as np
 
 from shared.chunking import Chunk, build_chunks

@@ -1,30 +1,3 @@
-"""DSPy Signature + Module for the generate step. Retrieval (the shared,
-locked pipeline — see retrieval.py) is called as a plain function from
-forward(), not represented as a dspy.Retrieve component, per the scoping
-decision that DSPy's distinctive surface for this benchmark is its typed
-Signature/Module generation layer, not a retrieval abstraction duplicating
-what's already fixed externally.
-
-No compile/optimizer step (e.g. BootstrapFewShot) is used: compiling
-against eval/qa_set.jsonl would blur DSPy's orchestration overhead together
-with prompt-optimization gains, which the writeup wants to keep as separate
-axes. This is a plain dspy.Predict call, not a dspy.ChainOfThought or
-compiled program.
-
-Decline signal: an early version asked the model to emit DECLINE_TEXT
-verbatim (mirroring the other four implementations) and gated citations on
-an exact string match, the same pattern as langchain_impl. Against the
-hard-unanswerable bucket, DSPy's auto-synthesized prompt (built from the
-Signature's docstring/field descriptions, not the literal instruction text)
-did not reliably reproduce that sentence verbatim — the model paraphrased
-instead, which silently broke the "empty citations iff declined" contract
-eval/metrics relies on. A typed `answerable` bool field is the idiomatic
-DSPy fix: it makes the decline a structured output the adapter parses,
-rather than a string pattern hoping the prompt survived DSPy's templating
-unchanged. This is itself a real data point on framework behavior, not
-just a workaround — see the writeup notes.
-"""
-
 import dspy
 
 from implementations.dspy_impl.retrieval import Retriever

@@ -1,14 +1,3 @@
-"""p50/p95 latency and token usage per query.
-
-"Cost" here means token counts, not a dollar figure: every implementation
-currently points at the same local, free LM Studio server (see
-shared/llm.py), so there's no real $/token to compute, and inventing one
-from an assumed rate would misrepresent a guess as a measurement. Token
-counts are still a meaningful, honest axis for the writeup on their own —
-e.g. whether a framework's prompt scaffolding costs more tokens than a raw
-API call for the same question is real compute overhead regardless of price.
-"""
-
 import numpy as np
 
 from eval.harness import EvalResult

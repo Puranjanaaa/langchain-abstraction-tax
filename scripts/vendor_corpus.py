@@ -1,13 +1,3 @@
-"""
-Vendors a fixed, license-clean snapshot of the Kubernetes docs (Concepts + Tasks)
-into corpus/kubernetes-docs/, stripping Hugo shortcodes down to plain markdown.
-
-Source: https://github.com/kubernetes/website (CC BY 4.0), pinned to a single commit
-so the corpus never drifts under the eval set. Re-running this script against a
-different SRC_DIR/commit is a deliberate corpus refresh, not something that
-should happen silently.
-"""
-
 import json
 import re
 import subprocess

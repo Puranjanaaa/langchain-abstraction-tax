@@ -1,19 +1,3 @@
-"""Agentic function-calling loop: the model is given a search_docs tool and
-decides for itself when, how, and how many times to call it before
-answering, rather than a fixed retrieve-then-generate sequence. This is
-what's distinctive about "function-calling as orchestration" for the
-writeup — retrieval internals (embed query, top-k, chunking) still call the
-exact same locked pipeline as every other implementation (see retrieval.py),
-only the decision of *when* to invoke it is left to the model.
-
-The local model (see shared/llm.py) has an observed quirk worth guarding
-against explicitly: on a turn where it emits a real tool_calls entry, its
-`message.content` sometimes also contains a fabricated, hallucinated
-"[TOOL_RESULT]...[END_TOOL_RESULT]" block — invented before the real tool
-result was ever returned. That content must never be treated as part of the
-answer. Only a turn with no tool_calls is trusted as the final answer.
-"""
-
 import json
 
 from openai.types.chat import ChatCompletionMessageParam

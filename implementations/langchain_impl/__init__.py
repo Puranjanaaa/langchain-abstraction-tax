@@ -1,11 +1,3 @@
-"""LangChain implementation of the shared answer() interface.
-
-Retrieval setup (chunking, top-k) is locked in shared/retrieval_config.py
-and held identical across all five implementations — see
-implementations/langchain_impl/indexing.py for the chunking algorithm and
-chain.py for how the chain itself is composed.
-"""
-
 from implementations.langchain_impl.chain import DECLINE_TEXT, LangChainRAG
 from shared.types import Answer, Citation, Usage
 

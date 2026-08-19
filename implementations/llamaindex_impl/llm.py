@@ -1,16 +1,3 @@
-"""Wraps shared.llm's OpenAI-compatible client as LlamaIndex's LLM and
-BaseEmbedding interfaces, so llamaindex_impl gets real LlamaIndex indexing/
-retrieval machinery (VectorStoreIndex, retrievers) while every network call
-still goes through the one shared, env-configured client — never
-LlamaIndex's own openai-specific integration classes, which would configure
-the endpoint a second, independent way (and, as of this writing, pin an
-`openai<3` constraint that conflicts with this repo's `openai>=3.3.0`).
-
-No streaming or true async is implemented — the eval harness only ever
-makes blocking answer() calls, so the stream_*/a* methods LlamaIndex's LLM
-ABC requires are thin synchronous wrappers, not real implementations.
-"""
-
 from typing import Any, Sequence
 
 from llama_index.core.base.embeddings.base import BaseEmbedding

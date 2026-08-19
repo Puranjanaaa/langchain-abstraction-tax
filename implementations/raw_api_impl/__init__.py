@@ -1,11 +1,3 @@
-"""Raw API implementation of the shared answer() interface: the openai SDK
-via shared.llm's env-configured client (the one sanctioned way every
-implementation talks to the model — see shared/llm.py), with zero framework
-or library help beyond that on top. Embedding, the vector search, chunking
-glue, and prompt assembly are all hand-written — see retrieval.py and
-generate.py.
-"""
-
 from implementations.raw_api_impl.generate import DECLINE_TEXT, RawAPIRAG
 from shared.types import Answer, Citation, Usage
 

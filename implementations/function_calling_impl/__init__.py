@@ -1,10 +1,3 @@
-"""Plain function-calling implementation of the shared answer() interface:
-agentic tool-calling via the openai SDK directly (no orchestration
-framework) — the model decides when and how many times to call search_docs
-before answering. See agent.py for the loop and why it distrusts message
-content on tool-calling turns.
-"""
-
 from implementations.function_calling_impl.agent import DECLINE_TEXT, FunctionCallingRAG
 from shared.types import Answer, Citation, Usage
 

@@ -1,27 +1,3 @@
-"""
-LLM-judge scoring for answer correctness and faithfulness.
-
-Correctness compares the answer against `reference_answer` for the
-question — including the hard-unanswerable bucket, where the reference
-states the corpus doesn't cover the question and a "correct" answer is one
-that declines rather than guesses. Output is a 3-way category rather than a
-numeric score: `easy`/`medium` pairs are usually clear-cut, but
-`hard-multihop` reference answers synthesize multiple sections, and a small
-local judge model is more reliable picking a category than a 1-5 number.
-
-Faithfulness checks the answer against the actual text its citations point
-to (via shared/source_text.py), independent of whether those citations were
-a *good* retrieval for the question — that's what eval/metrics/retrieval.py
-measures. It's scored only for answers that have citations; a
-zero-citation answer (e.g. a correct decline on hard-unanswerable) has
-nothing to check faithfulness against and is excluded from that average,
-the same way retrieval.py excludes hard-unanswerable pairs from recall/MRR.
-
-Both calls go through shared.llm.get_client(), pointed at the same local
-server used for generation (see shared/llm.py) — there's no separate judge
-model configured.
-"""
-
 import re
 
 from eval.harness import EvalResult

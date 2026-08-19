@@ -1,10 +1,3 @@
-"""Builds the LlamaIndex VectorStoreIndex from the shared chunk boundaries
-(shared/chunking.py) — LlamaIndex's own in-memory SimpleVectorStore, no
-external vector store library, embedded via implementations.llamaindex_impl
-.llm.SharedClientEmbedding so embedding calls route through the shared
-client rather than a LlamaIndex-native OpenAI integration.
-"""
-
 from llama_index.core import VectorStoreIndex
 from llama_index.core.schema import TextNode
 

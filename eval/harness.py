@@ -1,10 +1,3 @@
-"""
-Eval harness: runs eval/qa_set.jsonl against any Implementation and assembles
-the metrics from the project spec. Metric bodies live in eval/metrics/ — this
-module only owns loading the data, invoking the implementation, and timing
-each call (latency has to be measured here, at the call site, not after).
-"""
-
 import json
 import time
 from dataclasses import dataclass

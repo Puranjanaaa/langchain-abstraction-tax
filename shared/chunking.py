@@ -1,28 +1,3 @@
-"""Framework-agnostic header-aware chunking, extracted in Phase 5 so all five
-implementations produce byte-identical chunk boundaries regardless of which
-framework's Document/Node type wraps them.
-
-Two-stage algorithm (parameters locked in shared/retrieval_config.py):
-  1. Split each file on its markdown headings, so every chunk maps to
-     exactly one heading by construction. Heading slugs come from
-     corpus/manifest.json rather than being re-derived from the vendored
-     markdown — see the note in implementations/langchain_impl/indexing.py
-     for why (stripped `{#id}` anchor overrides).
-  2. Any section longer than SECTION_CHAR_LIMIT gets recursively sub-split,
-     with sub-chunks inheriting the parent section's (file, heading).
-
-implementations/langchain_impl/indexing.py predates this module (Phase 3)
-and is locked, so it keeps its own private copy of stage 1 backed by
-langchain_text_splitters directly for stage 2. The sub-split logic below is
-a from-scratch port of RecursiveCharacterTextSplitter's algorithm
-(separators=["\\n\\n", "\\n", ". ", " ", ""], keep_separator=True) rather
-than an import of that package, specifically so implementations/raw_api_impl
-(meant to carry zero framework code) and the other three don't pick up a
-langchain dependency transitively through shared/. Verified to produce
-byte-identical output to the real langchain_text_splitters implementation
-across every oversized section in the corpus.
-"""
-
 import json
 import re
 from dataclasses import dataclass

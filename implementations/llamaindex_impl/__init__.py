@@ -1,11 +1,3 @@
-"""LlamaIndex implementation of the shared answer() interface.
-
-Retrieval setup (chunking, top-k) is locked in shared/retrieval_config.py
-and held identical across all five implementations via shared/chunking.py
-— see implementations/llamaindex_impl/indexing.py for how those chunks
-become a VectorStoreIndex and query.py for the retrieve-then-generate loop.
-"""
-
 from implementations.llamaindex_impl.query import DECLINE_TEXT, LlamaIndexRAG
 from shared.types import Answer, Citation, Usage
 

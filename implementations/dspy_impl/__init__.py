@@ -1,14 +1,3 @@
-"""DSPy implementation of the shared answer() interface.
-
-Retrieval setup (chunking, top-k) is locked in shared/retrieval_config.py
-and held identical across all five implementations via shared/chunking.py
-— see implementations/dspy_impl/retrieval.py for the plain-Python
-embedding/similarity search and module.py for the DSPy Signature/Module
-that does generation. dspy.LM is configured from shared/llm.py's env
-config via LiteLLM's generic openai-compatible provider — never a
-DSPy-native provider integration configured independently.
-"""
-
 import dspy
 
 from implementations.dspy_impl.module import DECLINE_TEXT, KubernetesRAG
