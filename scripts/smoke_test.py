@@ -60,12 +60,14 @@ def main() -> None:
     )
     print(answer)
 
-    section("implementation stubs (implementations/)")
+    section("implementations (implementations/)")
     for impl in (langchain_impl, llamaindex_impl, dspy_impl, function_calling_impl, raw_api_impl):
         try:
-            impl.answer("placeholder question")
+            answer = impl.answer("What does a Kubernetes Deployment do?")
         except NotImplementedError:
-            print(f"{impl.name}: not implemented yet (expected — phase 3+)")
+            print(f"{impl.name}: not implemented yet")
+        else:
+            print(f"{impl.name}: {answer.text[:80]!r} ({len(answer.citations)} citations)")
 
     print("\nsmoke test passed: every piece is wired up correctly.")
 
