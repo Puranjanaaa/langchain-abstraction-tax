@@ -65,7 +65,7 @@ def score(results: list[EvalResult]) -> dict:
 
     return {
         "retrieval": retrieval.score(results),
-        "correctness": judge.score(results),
+        "judge": judge.score(results),
         "latency": performance.latency(results),
         "cost": performance.cost(results),
     }
