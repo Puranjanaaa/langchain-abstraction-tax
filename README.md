@@ -69,8 +69,19 @@ server, but any compatible endpoint works).
 
 ```bash
 uv sync
-cp .env.example .env   # then fill in LLM_BASE_URL / LLM_API_KEY / LLM_MODEL / EMBEDDING_MODEL
 ```
+
+Then create a `.env` in the repo root with:
+
+```
+LLM_BASE_URL=http://localhost:1234/v1
+LLM_API_KEY=lm-studio
+LLM_MODEL=meta-llama-3-8b-instruct
+EMBEDDING_MODEL=text-embedding-nomic-embed-text-v1.5
+```
+
+(`shared/llm.py` reads these; adjust to whatever OpenAI-compatible endpoint
+and models you're pointing at.)
 
 ## Quick start
 
@@ -95,8 +106,11 @@ seconds.
 
 ## Status
 
-Phases 1–4 (corpus, shared scaffolding, LangChain implementation, eval
-metrics) and Phase 5 (the remaining four implementations) are built and
-individually validated against the harness. The full 70-question evaluation
-run across all five implementations, and the tradeoff writeup itself, are
-still ahead.
+The codebase is final: all five implementations (Phases 1–5 — corpus, shared
+scaffolding, LangChain, and the remaining four implementations) are built,
+share identical locked retrieval, and have each been individually validated
+against the harness. No further implementation changes are planned.
+
+What's still ahead is analysis, not code: a full 70-question evaluation run
+across all five implementations, and the tradeoff writeup itself — the
+actual deliverable this repo exists to produce.
